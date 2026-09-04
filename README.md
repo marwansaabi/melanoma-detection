@@ -84,16 +84,26 @@ diagnostic aid would need to be; see below.
   dataset (the full ISIC 2018 challenge has ~2,600 images) that gap would
   likely be the main lever for improvement.
 
+## Try it live
+
+An interactive demo is at **[TBD — Streamlit Cloud link]**. Pick one of six
+curated examples, or upload your own dermoscopic image — both paths run the
+exact same pipeline. The app is upfront about what it is: an educational
+demo behind a disclaimer, not a diagnostic tool, and the header repeats the
+90.2% cross-validated accuracy so the number stays attached to the claim.
+
 ## Reproducing this
 
 ```bash
 pip install -r requirements.txt
-python data/download_dataset.py      # fetches the 51 images + masks (~15MB)
-python melanoma_detector.py
+python data/download_dataset.py           # fetches the 51 images + masks (~15MB)
+python melanoma_detector.py               # reproduces the report's numbers
+python train_and_export_model.py          # fits & saves the model the app uses
+streamlit run app.py                      # runs the interactive demo locally
 ```
 
-Outputs (confusion matrix, IoU histogram, segmentation examples) are written
-to `output/`.
+`melanoma_detector.py` writes its outputs (confusion matrix, IoU histogram,
+segmentation examples) to `output/`.
 
 ## Data
 
@@ -109,14 +119,19 @@ challenge set. Not bundled in this repo (mixed licensing; see below) —
 ## Repository contents
 
 ```
-melanoma_detector.py   — the full pipeline, standalone and runnable
+melanoma_detector.py        — the full pipeline, standalone and runnable
+train_and_export_model.py   — fits the final SVM on all 51 images, saves it for the app
+app.py                      — Streamlit demo (examples + free upload)
 data/
-  list.csv             — image IDs + benign/melanoma labels
-  download_dataset.py  — fetches images + masks from the ISIC Archive
-  ATTRIBUTION_*.txt     — dataset licenses
+  list.csv                  — image IDs + benign/melanoma labels
+  download_dataset.py       — fetches images + masks from the ISIC Archive
+  ATTRIBUTION_*.txt          — dataset licenses
+app_assets/
+  model.joblib              — the trained SVM the app loads
+  examples/                 — 6 curated CC0 images + masks for the demo's example mode
 report/
-  Report_IEEE.pdf       — full write-up: related work, method, results, discussion
-figures/                — segmentation example, confusion matrix, IoU distribution
+  Report_IEEE.pdf            — full write-up: related work, method, results, discussion
+figures/                     — segmentation example, confusion matrix, IoU distribution
 ```
 
 ---
