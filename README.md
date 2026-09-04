@@ -86,7 +86,7 @@ diagnostic aid would need to be; see below.
 
 ## Try it live
 
-An interactive demo is at **[TBD — Streamlit Cloud link]**. Pick one of six
+An interactive demo is at **[marwan-melanoma-detection.streamlit.app](https://marwan-melanoma-detection.streamlit.app)**. Pick one of six
 curated examples, or upload your own dermoscopic image — both paths run the
 exact same pipeline. The app is upfront about what it is: an educational
 demo behind a disclaimer, not a diagnostic tool, and the header repeats the
