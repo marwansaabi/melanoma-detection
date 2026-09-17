@@ -1,5 +1,7 @@
 # Automated Melanoma Detection from Dermoscopic Images
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://marwan-melanoma-detection.streamlit.app/)
+
 Coursework project — *Análisis de Imágenes Biomédicas*, MSc in Bioinformatics
 Applied to Health Sciences, Universidade da Coruña (2025/26).
 
